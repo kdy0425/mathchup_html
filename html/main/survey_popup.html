@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="canonical" href="">
+<link rel="shortcut icon" type="image/x-icon" href="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta property="og:title" content=""/>
+<meta property="og:url" content="" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content=""/>
+<meta property="og:description" content="" />
+<title>matchup</title>
+<link rel="stylesheet" type="text/css" href="../../assets/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/content.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/jquery.scrollbar.css" />
+<script src="../../assets/js/jquery-1.11.3.min.js"></script>
+<script src="../../assets/js/jquery-ui.min.js"></script>
+<script src="../../assets/js/jquery.scrollbar.min.js"></script>
+<script src="../../assets/js/slick.js"></script>
+</head>
+<body>
+
+<div class="survey_page"> 
+	<div class="survey_wrap">
+		<div class="survey_item">
+			<div class="tit">1. 귀하의 현재 직업은 무엇입니까?(단일선택) </div>
+			<div class="survey_list">
+				<div class="item">
+					<label><input type="radio" name="survey_radio1"><span></span>구직자(취업준비생)</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio1"><span></span>대학(원)생</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio1"><span></span>재직자</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio1"><span></span>자영업</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio1" value="0"><span></span>기타(서술):</label>
+					<div class="input_text" style="display:none;">
+						<input type="text">
+					</div>
+				</div>
+			</div>
+			<script>
+			$('input[name="survey_radio1"]').change(function(){
+				if($('input[name="survey_radio1"]:checked').val() == 0){
+					$(this).closest('.survey_list').find('.input_text').show();
+				}else{
+					$(this).closest('.survey_list').find('.input_text').hide();
+					$(this).closest('.survey_list').find('.input_text input').val('')
+				}
+			});
+			</script>
+		</div>
+
+		<div class="survey_item">
+			<div class="tit">2. 매치업 직무능력 인증평가 응시 목적은 무엇입니까?(복수선택) </div>
+			<div class="survey_list">
+				<div class="item">
+					<label><input type="checkbox"><span></span>승진/부서이동 등에 도움이 될 것 같아서</label>
+				</div>
+				<div class="item">
+					<label><input type="checkbox"><span></span>사내/학내 교육시간 인정을 위해</label>
+				</div>
+				<div class="item">
+					<label><input type="checkbox"><span></span>이직에 도움이 될 것 같아서</label>
+				</div>
+				<div class="item">
+					<label><input type="checkbox"><span></span>구직에 도움이 될 것 같아서</label>
+				</div>
+				<div class="item">
+					<label><input type="checkbox"><span></span>개인역량개발 및 지식함양을 위해</label>
+				</div>
+				<div class="item">
+					<label><input type="checkbox" id="survey2etc"><span></span>기타(서술):</label>
+					<div class="input_text" style="display:none;">
+						<input type="text">
+					</div>
+				</div>
+			</div>
+			<script>
+			$('#survey2etc').change(function(){
+				if($('#survey2etc').is(":checked")){
+					$(this).closest('.survey_list').find('.input_text').show();
+				}else{
+					$(this).closest('.survey_list').find('.input_text').hide();
+					$('#survey2etc').val('')
+				}
+			});
+			</script>
+		</div>
+
+		<div class="survey_item">
+			<div class="tit">3.  매치업 직무능력인증서가 위 목적을 달성하는데 어느 정도 도움이 될 것이라 생각하십니까?(단일선택) </div>
+			<div class="survey_list">
+				<div class="item">
+					<label><input type="radio" name="survey_radio2"><span></span>매우 그렇다</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio2"><span></span>그렇다</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio2"><span></span>보통이다</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio2"><span></span>그렇지 않다</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio2"><span></span>전혀 그렇지 않다</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="survey_item">
+			<div class="tit">4. 매치업 직무능력 인증평가 시험 난이도는 어느 정도였다고 생각하십니까?(단일선택) </div>
+			<div class="survey_list">
+				<div class="item">
+					<label><input type="radio" name="survey_radio3"><span></span>매우 어려움</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio3"><span></span>어려움</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio3"><span></span>보통</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio3"><span></span>쉬움</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio3"><span></span>매우 쉬움</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="survey_item">
+			<div class="tit">5. 매치업 직무능력 인증평가를 위해 학습한 기간이 어느 정도입니까?(단일선택) </div>
+			<div class="survey_list">
+				<div class="item">
+					<label><input type="radio" name="survey_radio4"><span></span>매우 어려움</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio4"><span></span>어려움</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio4"><span></span>보통</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio4"><span></span>쉬움</label>
+				</div>
+				<div class="item">
+					<label><input type="radio" name="survey_radio4"><span></span>매우 쉬움</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="survey_item">
+			<div class="tit">6. 매치업 직무능력 인증평가에 바라는 점은?(서술형)</div>
+			<div class="survey_list">
+				<div class="item">
+					<div class="input_text">
+						<input type="text">
+					</div>
+				</div>
+				<!-- <div class="item">
+					<div class="input_text">
+						<textarea name="" id="" ></textarea>
+					</div>
+				</div> -->
+			</div>
+		</div>
+
+	</div>
+	<div class="survey_btn">
+		<a href="javascript:;" class="btn submit">참여하기</a>
+	</div> 
+</div>
+
+<script src="../../assets/js/common.js"></script>
+
+</body>
+</html>	

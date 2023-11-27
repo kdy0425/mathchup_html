@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta charset="UTF-8">
+<meta name="author" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title>matchup</title>
+<script
+src="http://code.jquery.com/jquery-2.2.4.js"
+integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+crossorigin="anonymous"></script>
+<style type="text/css">
+	#guide_wrap {padding:10px;width:1250px;margin:0 auto;}
+	table {border-collapse:collapse;border-spacing:0;}
+	table + table{margin-top:30px;}
+	table caption{text-align:left;padding:10px 0;font-size:20px;font-weight:bold;}
+	table th, strong {font-weight:normal;}
+	h1{
+		margin:0 0 10px 0;
+		text-align:center;
+		font-size:2em;
+		color:#000
+	}
+	a {text-decoration:none;}
+	a:hover {text-decoration:underline;}
+	table {
+		width:100%;
+		margin-top:5px;
+		border-top:2px solid #1e61a8;
+	}
+	table th, table td{
+		padding:5px 7px;
+		border-left:1px solid #ccc; border-bottom:1px solid #ccc;
+	}
+	table th:rowspan + th, table td:rowspan + td{border-left:1px solid #ccc;}
+	td.lineli, th.lineli {border-left:1px solid #ccc !important;}
+	table th:first-child, table td:first-child{border-left:0 none}
+	table thead th {
+		font-family:'ngB';
+		font-size:13px;
+		color:#000;
+		border-bottom:1px solid #ccc;
+		background-color:#f2f2f2;
+	}
+	table td{font-size:13px;}
+	a{color:#444;}
+	.no, .date, .work {
+		text-align:center;
+		padding:5px 0
+	}
+
+	tr.on {background-color: #f5fed0}
+
+	.lastmdate {color: #1155CC;}
+	.stand_by {color:#777;}
+	.ing, .per_2 {color:#4848D4 !important;}
+	.curr_n, .per, .end {color:#ff0000 !important;}
+
+	.division td{border-top:2px solid #7e8e9e}
+	table tr.division:first-child td{border-top:0 none;}
+	.date{display:none;}
+		table td.dd{background-color:#daf1ff}
+		span.ss{background-color:#cff3ef;display:block;padding:3px 5px;}
+
+</style>
+</head>
+<body>
+<div id="wrap" class="wrap">
+<!-- eniter wrap -->
+<div id="guide_wrap">
+	<div class="header">
+		<h1>matchup 작업목록</h1>
+		<p>진행중 : <span class="ing_n"></span>p / 미완료 : <span class="notcurr_n"></span>p / 완료 : <span class="curr_n"></span>p / 전체 : <span class="total_n"></span>p</p>
+		<p>진행율 : <span class="per_2"></span> / 완료율 : <span class="per"></span></p>
+	</div>
+	<div class="list_w">
+		<table class="codinglist">
+			<caption>작업 페이지</caption>
+			<colgroup>
+				<col style="width:40px">
+				<col>
+				<col>
+				<col>
+				<col>
+				<col style="width:5%">
+				<col style="width:50px">
+				<col>
+			</colgroup>
+			<thead>
+				<tr>
+					<th rowspan="2">번호</th>
+					<th colspan="4">네비</th>
+					<th rowspan="2">파일명/링크</th>
+					<th rowspan="2">퍼블상태</th>
+					<th rowspan="2">기타</th>
+				</tr>
+				<tr>
+					<th class="lineli">1depth</th>
+					<th>2depth</th>
+					<th>3depth</th>
+					<th>4depth</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="no"></td>
+					<td>메인</td>
+					<td>로그인전</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./main/main.html" target="_blank">main.html</a></td>
+					<td class="date">2020-11-14</td>
+					<td class="work"></td>
+					<td class="etc">전체메뉴 포함</td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>로그인후</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./main/main2.html" target="_blank">main2.html</a></td>
+					<td class="date">2020-11-19</td>
+					<td class="work"></td>
+					<td class="etc">전체메뉴 포함</td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>로그인</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./member/login.html" target="_blank">login.html</a></td>
+					<td class="date">2020-11-19</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>아이디 찾기</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./member/find_id.html" target="_blank">find_id.html</a></td>
+					<td class="date">2020-11-19</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>비밀번호 찾기</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./member/find_pw.html" target="_blank">find_pw.html</a></td>
+					<td class="date">2020-11-19</td>
+					<td class="work"></td>
+					<td class="etc">이메일 주소로 찾기<br/>휴대폰번호로 찾기</td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>회원가입</td>
+					<td>나이 선택</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./member/join_step1.html" target="_blank">join_step1.html</a></td>
+					<td class="date">2020-11-25</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>일반 가입폼</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./member/join_step2.html" target="_blank">join_step2.html</a></td>
+					<td class="date">2020-11-25</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>어린이 가입폼2</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./member/join_step2_2.html" target="_blank">join_step2_2.html</a></td>
+					<td class="date">2020-11-25</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>완료</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./member/join_comp.html" target="_blank">join_comp.html</a></td>
+					<td class="date">2020-11-26</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>운영분야</td>
+					<td>인공지능</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./field/ai.html" target="_blank">ai.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>빅데이터</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./field/bigdata.html" target="_blank">bigdata.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>스마트물류</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./field/smart.html" target="_blank">smart.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>스마트팜</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./field/smartfarm.html" target="_blank">smartfarm.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>신에너지자동차</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./field/newenergy.html" target="_blank">newenergy.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>블록체인</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./field/blockchain.html" target="_blank">blockchain.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>교육과정 및 인증평가</td>
+					<td>교육과정</td>
+					<td>리스트</td>
+					<td>신에너지자동차</td>
+					<td class="link"><a href="./jop/edu_list.html" target="_blank">edu_list.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>전체</td>
+					<td class="link"><a href="./jop/edu_list2.html" target="_blank">edu_list2.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td></td>
+					<td class="link"><a href="./jop/edu_detail.html" target="_blank">edu_detail.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>인증평가</td>
+					<td>리스트</td>
+					<td></td>
+					<td class="link"><a href="./jop/exam_list.html" target="_blank">exam_list.html</a></td>
+					<td class="date">2020-11-21</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>게시판</td>
+					<td>공지사항</td>
+					<td>리스트</td>
+					<td></td>
+					<td class="link"><a href="./board/notice_list.html" target="_blank">notice_list.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td></td>
+					<td class="link"><a href="./board/notice_detail.html" target="_blank">notice_detail.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>1:1상담</td>
+					<td>리스트</td>
+					<td></td>
+					<td class="link"><a href="./board/qna_list.html" target="_blank">qna_list.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td></td>
+					<td class="link"><a href="./board/qna_detail.html" target="_blank">qna_detail.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td></td>
+					<td>등록</td>
+					<td></td>
+					<td class="link"><a href="./board/qna_write.html" target="_blank">qna_write.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>마이페이지</td>
+					<td>프로그램 이수현황</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./mypage/program.html" target="_blank">program.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>직무능력인증현황</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./mypage/jop.html" target="_blank">jop.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>증명서발급내역조회</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./mypage/certificate.html" target="_blank">certificate.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>관심항목</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./mypage/like.html" target="_blank">like.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>평가신청</td>
+					<td>평가신청</td>
+					<td></td>
+					<td class="link"><a href="./mypage/appraisal.html" target="_blank">appraisal.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc">동의 팝업</td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td></td>
+					<td>신청이력</td>
+					<td></td>
+					<td class="link"><a href="./mypage/appraisal2.html" target="_blank">appraisal2.html</a></td>
+					<td class="date">2020-11-29</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td></td>
+					<td>개인정보수정</td>
+					<td></td>
+					<td class="link"><a href="javascript:;" target="_blank">.html</a></td>
+					<td class="date"></td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>매치업이란</td>
+					<td>매치업 소개</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./matchup/introduce.html" target="_blank">introduce.html</a></td>
+					<td class="date">2020-12-02</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>매치업 활용기업</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./matchup/matchup_cooperation.html" target="_blank">matchup_cooperation.html</a></td>
+					<td class="date">2020-12-02</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>매치업과 함께하기</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./matchup/together.html" target="_blank">together.html</a></td>
+					<td class="date">2020-12-02</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>이용안내</td>
+					<td>개인정보처리방침</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./comm/privacy.html" target="_blank">privacy.html</a></td>
+					<td class="date">2020-12-03</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>오시는길</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./comm/way.html" target="_blank">way.html</a></td>
+					<td class="date">2020-12-03</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>사이트맵</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./comm/sitemap.html" target="_blank">sitemap.html</a></td>
+					<td class="date">2020-12-03</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>증명서원본대조</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./comm/certificate.html" target="_blank">certificate.html</a></td>
+					<td class="date">2020-12-03</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>검색결과</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./search/search_result.html" target="_blank">search_result.html</a></td>
+					<td class="date">2020-12-04</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td>로드맵</td>
+					<td>스마트시티</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./roadmap/roadmap1.html" target="_blank">roadmap1.html</a></td>
+					<td class="date">2021-12-16</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>지능형자동차</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./roadmap/roadmap2.html" target="_blank">roadmap2.html</a></td>
+					<td class="date">2021-12-16</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>스마트팜</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./roadmap/roadmap3.html" target="_blank">roadmap3.html</a></td>
+					<td class="date">2021-12-16</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>신에너지자동차</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./roadmap/roadmap4.html" target="_blank">roadmap4.html</a></td>
+					<td class="date">2021-12-16</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+				<tr>
+					<td class="no"></td>
+					<td></td>
+					<td>블록체인</td>
+					<td></td>
+					<td></td>
+					<td class="link"><a href="./roadmap/roadmap5.html" target="_blank">roadmap5.html</a></td>
+					<td class="date">2021-12-16</td>
+					<td class="work"></td>
+					<td class="etc"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function () {
+		$(".tab_menu li a").click(function () {
+			$(".tab_menu li a").removeClass("active");
+			$(this).addClass("active");
+			$(".list_w").hide().removeClass("codinglist")
+			var activeTab = $(this).attr("rel");
+			$("#" + activeTab).fadeIn().addClass("codinglist");
+			chkList();
+		});
+		chkList();
+	});
+
+	function chkList(){
+		var tatal_n = $(".codinglist tbody tr").length;
+		var curr_n = 0;
+		var ing_n = 0;
+		$(".codinglist td.link a").each(function() {
+			$(this).closest('tr').find('.work').text('대기중').addClass('stand_by');
+			if($(this).attr('href') != '#' && $(this).text().length > 0 && $(this).closest('tr').find('.date').text().length > 4){
+				curr_n++;
+				$(this).closest('tr').find('.work').text('완료').addClass('end');
+			} else if ($(this).text().length > 0 && $(this).attr('href') != '#') {
+				ing_n++;
+				$(this).closest('tr').find('.work').text('진행중').addClass('ing');
+			}
+		});
+
+		$(".codinglist tbody tr").each(function() {
+			var index = $(this).index()+1;
+			$(this).children(".codinglist td.no").text(index);
+		});
+
+		$(".codinglist .no + td").each(function() {
+			if($(this).text() != ""){
+				$(this).parent('tr').addClass('division');
+			}
+		});
+
+		$(".codinglist td").click(function() {
+			$(".codinglist tr").removeClass("on");
+			$(this).parent(".codinglist tr").addClass("on");
+		});
+
+		$('.total_n').text(tatal_n);
+		$('.curr_n').text(curr_n);
+		$('.notcurr_n').text(tatal_n - curr_n);
+		$('.ing_n').text(ing_n).addClass('ing');
+		$('.per').text(Math.floor((curr_n/tatal_n)*100) + '%');
+		$('.per_2').text(Math.floor((ing_n/tatal_n)*100) + '%');
+	}
+
+</script>
+</div><!-- //wrap -->
+</body>
+</html>
